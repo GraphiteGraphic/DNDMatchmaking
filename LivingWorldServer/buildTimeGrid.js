@@ -99,6 +99,11 @@ function fillTable() {
     };
 }
 
+function save() {
+    //Intended to post player time availability to API to be saved to database. Cannot be implemented yet.
+    console.log('Not yet implemented');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Build table
     const timeTable = document.querySelector('#Heat-Map table tbody');
@@ -149,4 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nextPage(ev);
         })
     });
+    let savebutton = document.querySelector('#save');
+    savebutton.addEventListener('click', save);
 });
