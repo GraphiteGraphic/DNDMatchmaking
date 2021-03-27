@@ -7,9 +7,9 @@ const params = [
 ];
 
 const playerData = [
-    { name: "Bob", faction: "Bards College", race: "Kobold", subrace: null, origin: "Krazax", suborigin: "Foo" },
-    { name: "Bill", faction: "Bards College", race: "Human", subrace: "Dwarf: Hill", origin: "Dolten", suborigin: "Foo" },
-    { name: "Steve", faction: "Steton Striders", race: "Kobold", subrace: null, origin: "Krazax", suborigin: "Bar" }
+    { name: "Bob", Faction: "Bards College", Race: "Kobold", Subrace: null, Origin: "Krazax", Suborigin: "Foo" },
+    { name: "Bill", Faction: "Bards College", Race: "Human", Subrace: "Dwarf: Hill", Origin: "Dolten", Suborigin: "Foo" },
+    { name: "Steve", Faction: "Steton Striders", Race: "Kobold", Subrace: null, Origin: "Krazax", Suborigin: "Bar" }
 ]
 
 const data = [
@@ -43,7 +43,7 @@ function displayParams(filter, paramType) {
                 entry.type = paramType;
                 entry.name = entryName;
                 entry.id = entryName;
-                entry.addEventListener('click', (ev) => {
+                entry.addEventListener('change', (ev) => {
                     filterHeatMap(ev);
                 });
 
@@ -62,7 +62,15 @@ function displayParams(filter, paramType) {
 }
 
 function filterHeatMap(ev) {
-    console.log(ev);
+    let filterParam = ev.target.parentNode.parentNode.innerText.substring(0, ev.target.parentNode.parentNode.innerText.indexOf(':')).toString();
+    let filterItem = ev.target.checked ? ev.target.id : "";
+    let filteredList = playerData.filter((player) => {return player[filterParam].includes(filterItem);})
+    
+    clearTimeTable();
+    const timeTable = document.querySelector('#Heat-Map table tbody');
+    for (let i = 0; i < filteredList.length; i++) {
+        fillTimeTable(filteredList[i].time, timeTable.children, i);
+    }
 }
 
 function nextPage(ev) {
@@ -133,7 +141,7 @@ function clearTimeTable() {
     const timeTable = document.querySelectorAll('#Heat-Map table tbody tr');
     timeTable.forEach((row) => {
         for (let i = 0; i < 7; i++) {
-            row.children[i].style.backgroundColor = "";
+            row.children[i].classList.remove('available');
             row.children[i].style.opacity = "";
         };
     });
@@ -144,7 +152,7 @@ function fillTimeTable(player, gridRows, num) {
         for (let i = 0; i < player[j].length; i++) {
             let opacity = parseFloat(gridRows[j].children[i].style.opacity);
             if (player[j][i] == 1) {
-                gridRows[j].children[i].style.backgroundColor = "rgb(0,255,0)";
+                gridRows[j].children[i].classList.add('available');
                 if (gridRows[j].children[i].style.opacity == "") {
                     gridRows[j].children[i].style.opacity = ".1";
                 }

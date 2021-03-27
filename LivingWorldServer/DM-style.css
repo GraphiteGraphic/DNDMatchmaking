@@ -107,6 +107,10 @@ tr#timeGrid td.prevDay{
     background-color: rgb(255,200,200);
 }
 
+#timeGrid td.available{
+    background-color: green;
+}
+
 #timeGrid td{
     border-left: 1px solid rgb(125, 125, 125);
     border-right: 1px solid rgb(125, 125, 125);
