@@ -1,0 +1,82 @@
+#Heat-Map #timescale{
+    grid-area: timeScale;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 5px;
+    text-align: right;
+}
+
+#timescale p:first-child, #timescale p:last-child{
+    height:27px;
+}
+
+#timescale p{
+    font-size: 10px;
+    margin: 0px;
+}
+
+table{
+    grid-area: timeGrid;
+    border-collapse: collapse;
+}
+
+#buttons{
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Heat-Map {
+    display: grid;
+    grid-template-areas: 
+        "timeScale timeGrid"
+        "timeScale buttons";
+    grid-area: heat-map;
+}
+
+#buttons p{
+    font-size: 16px;
+    margin: 0px;
+    padding-top: 5px;
+}
+
+th {
+    border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+tr#timeGrid:nth-child(odd){
+    border-bottom: 1px dashed gray;
+}
+
+tr#timeGrid:nth-child(even){
+    border-bottom: 1px solid darkgray;
+}
+
+tr#timeGrid:nth-child(4n){
+    border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+#timeGrid td{
+    border-left: 1px solid rgb(125, 125, 125);
+    border-right: 1px solid rgb(125, 125, 125);
+    background-color: lightgray;
+    width: 15vw;
+    height: 8px;
+}
+
+#timeGrid td:hover {
+    background-color: coral;
+}
+
+tr#timeGrid td.available, tr#timeGrid td.available.prevDay {
+    background-color: green;
+}
+
+tr#timeGrid td.prevDay{
+    background-color: rgb(255,200,200);
+}
+
+#timeGrid td.prevDay:hover, #timeGrid td.available:hover, #timeGrid td.available.prevDay:hover {
+    background-color: coral;
+}

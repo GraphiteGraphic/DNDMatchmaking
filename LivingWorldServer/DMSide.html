@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling</title>
+    <link rel="stylesheet" href="DM-style.css">
+    <script src="DM-script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Dungeon Master Side</h1>
+    </header>
+    <main>
+        <section id="Filter">
+            <div>
+                Faction:
+            </div>
+            <div>
+                Race:
+            </div>
+            <div>
+                Subrace:
+            </div>
+            <div>
+                Origin:
+            </div>
+            <div>
+                Suborigin:
+            </div>
+        </section>
+
+        <section id="Submission">
+            <form method="POST" action="webapi">
+                <div>
+                    <label for="title">Mission Title: </label>
+                    <input type="text" required="true" name="title" id="title">
+                </div>
+
+                <div>
+                    <label for="description">Description: </label>
+                    <textarea name="description" id="description"></textarea>
+                </div>
+
+                <div>
+                    <label for="region">Regional Influence: </label>
+                    <select name="region" id="region">
+                        <option value="none">None</option>
+                        <option value="krazax">Krazax</option>
+                    </select>
+
+
+                    <label for="descriptor">Descriptors: </label>
+                    <input type="text" placeholder="RPLock, Skirmish, Ruthless" name="descriptor" id="descriptor">
+                </div>
+
+                <div>
+                    <label for="minLevel">Minimum Level: </label>
+                    <input type="number" min=1 max=12 name="minLevel" id="minLevel">
+
+                    <label for="maxLevel">Maximum Level: </label>
+                    <input type="number" min=1 max=12 name="maxLevel" id="maxLevel">
+                </div>
+
+                <div>
+                    <label for="sessionDate">Session Date: </label>
+                    <input type="date" required="true" name="sessionDate" id="sessionDate">
+                </div>
+
+                <div>
+                    <label for="startTime">Start Time: </label>
+                    <input type="time" required="true" name="startTime" id="startTime">
+
+                    <label for="endTime">End Time: </label>
+                    <input type="time" required="true" name="endTime" id="endTime">
+                </div>
+
+                <div>
+                    <label for="sessionNumber">Total Number of Sessions: </label>
+                    <input type="number" required="true" name="sessionNumber" id="sessionNumber" min=1 placeholder=1>
+
+                    <label for="modifier">Mission Type: </label>
+                    <select required="true" name="modifier" id="modifier">
+                        <option value="minor">Minor</option>
+                        <option value="lesser">Lesser</option>
+                        <option value="major">Major</option>
+                    </select>
+
+                    <label for="prestige">Prestige Level: </label>
+                    <input type="number" min=0 max=4 placeholder=0 name="prestige" id="prestige">
+                </div>
+
+                <div>
+                    <div id="requirement">
+                        <div>
+                            Required Attributes:
+                            <div>
+                                <label for="req-Faction">Faction: </label>
+                                <select name="req-Faction" id="req-Faction">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="req-Race">Race: </label>
+                                <select name="req-Race" id="req-Race">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="req-Subrace">Subrace: </label>
+                                <select name="req-Subrace" id="req-Subrace">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="req-Origin">Origin: </label>
+                                <select name="req-Origin" id="req-Origin">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="req-Suborigin">Suborigin: </label>
+                                <select name="req-Suborigin" id="req-Suborigin">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <section name="required-list" id="required-list"></section>
+
+
+                    <div id="preference">
+                        <div>
+                            Preferred Attributes:
+
+                            <div>
+                                <label for="pref-Faction">Faction: </label>
+                                <select name="pref-Faction" id="pref-Faction">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="pref-Race">Race: </label>
+                                <select name="pref-Race" id="pref-Race">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="pref-Subrace">Subrace: </label>
+                                <select name="pref-Subrace" id="pref-Subrace">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="pref-Origin">Origin: </label>
+                                <select name="pref-Origin" id="pref-Origin">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="pref-Suborigin">Suborigin: </label>
+                                <select name="pref-Suborigin" id="pref-Suborigin">
+                                    <option value=Null></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <section name="pref-list" id="pref-list"></section>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+
+        <section id="Heat-Map">
+            <section id=timescale>
+                <p></p>
+                <p>12:00 AM</p>
+                <p>12:30 AM</p>
+                <p>1:00 AM</p>
+                <p>1:30 AM</p>
+                <p>2:00 AM</p>
+                <p>2:30 AM</p>
+                <p>3:00 AM</p>
+                <p>3:30 AM</p>
+                <p>4:00 AM</p>
+                <p>4:30 AM</p>
+                <p>5:00 AM</p>
+                <p>5:30 AM</p>
+                <p>6:00 AM</p>
+                <p>6:30 AM</p>
+                <p>7:00 AM</p>
+                <p>7:30 AM</p>
+                <p>8:00 AM</p>
+                <p>8:30 AM</p>
+                <p>9:00 AM</p>
+                <p>9:30 AM</p>
+                <p>10:00 AM</p>
+                <p>10:30 AM</p>
+                <p>11:00 AM</p>
+                <p>11:30 AM</p>
+                <p>12:00 AM</p>
+                <p>12:30 PM</p>
+                <p>1:00 PM</p>
+                <p>1:30 PM</p>
+                <p>2:00 PM</p>
+                <p>2:30 PM</p>
+                <p>3:00 PM</p>
+                <p>3:30 PM</p>
+                <p>4:00 PM</p>
+                <p>4:30 PM</p>
+                <p>5:00 PM</p>
+                <p>5:30 PM</p>
+                <p>6:00 PM</p>
+                <p>6:30 PM</p>
+                <p>7:00 PM</p>
+                <p>7:30 PM</p>
+                <p>8:00 PM</p>
+                <p>8:30 PM</p>
+                <p>9:00 PM</p>
+                <p>9:30 PM</p>
+                <p>10:00 PM</p>
+                <p>10:30 PM</p>
+                <p>11:00 PM</p>
+                <p>11:30 PM</p>
+                <p></p>
+            </section>
+            <table>
+                <thead>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <section id='buttons'>
+                <button id="-1">&#8617;</button>
+                <p>1/12</p>
+                <button id="1">&#8618;</button>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+header{
+    grid-area: header;
+}
+
+main {
+    display: grid;
+    grid-template-areas:
+        "header header" 
+        "filter heat-map"
+        "filter submission";
+}
+
+/* Filter styling */
+#Filter {
+    grid-area: filter;
+    margin-right: 25px;
+}
+
+/* Submission Form styling */
+#Submission {
+    grid-area: submission;
+}
+
+#Submission > form > div{
+    display: flex;
+    flex-direction: row;
+}
+
+#Submission > form > div:first-child, 
+#Submission > form > div:nth-child(2){
+    flex-direction: column;
+}
+
+#title, #description, #descriptor{
+    flex-grow: 1;
+}
+
+#sessionNumber, #prestige, #minLevel, #maxLevel{
+    width: 45px;
+}
+
+#required-list, #pref-list{
+    width: 150px;
+}
+
+/* Heat Map styling */
+#Heat-Map #timescale{
+    grid-area: timeScale;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 5px;
+    text-align: right;
+}
+
+#timescale p:first-child, #timescale p:last-child{
+    height:27px;
+}
+
+#timescale p{
+    font-size: 10px;
+    margin: 0px;
+}
+
+table{
+    grid-area: timeGrid;
+    border-collapse: collapse;
+}
+
+#buttons{
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Heat-Map {
+    display: grid;
+    grid-template-areas: 
+        "timeScale timeGrid"
+        "timeScale buttons";
+    grid-area: heat-map;
+}
+
+#buttons p{
+    font-size: 16px;
+    margin: 0px;
+    padding-top: 5px;
+}
+
+th {
+    border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+tr#timeGrid:nth-child(odd){
+    border-bottom: 1px dashed gray;
+}
+
+tr#timeGrid:nth-child(even){
+    border-bottom: 1px solid darkgray;
+}
+
+tr#timeGrid:nth-child(4n){
+    border-bottom: 1px solid rgb(125, 125, 125);
+}
+
+tr#timeGrid td.prevDay{
+    background-color: rgb(255,200,200);
+}
+
+#timeGrid td{
+    border-left: 1px solid rgb(125, 125, 125);
+    border-right: 1px solid rgb(125, 125, 125);
+    background-color: lightgray;
+    width: 15vw;
+    height: 8px;
+}
