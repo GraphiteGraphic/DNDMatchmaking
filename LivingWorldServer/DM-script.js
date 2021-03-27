@@ -18,6 +18,7 @@ const data = [
     { name: "Steve", page: 12, time: [[1, 1, 1, 1, 1, 1, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0], [0, 1, 1, 1, 1, 0, 0]] }
 ]
 
+const filter = {Faction: [], Race: [], Subrace: [], Origin: [], Suborigin: []}
 let reqList = [];
 let prefList = [];
 
@@ -44,7 +45,7 @@ function displayParams(filter, paramType) {
                 entry.name = entryName;
                 entry.id = entryName;
                 entry.addEventListener('change', (ev) => {
-                    filterHeatMap(ev);
+                    changeFilter(ev);
                 });
 
                 filter[i].appendChild(group);
@@ -61,15 +62,39 @@ function displayParams(filter, paramType) {
     };
 }
 
-function filterHeatMap(ev) {
+function changeFilter(ev) {
     let filterParam = ev.target.parentNode.parentNode.innerText.substring(0, ev.target.parentNode.parentNode.innerText.indexOf(':')).toString();
-    let filterItem = ev.target.checked ? ev.target.id : "";
-    let filteredList = playerData.filter((player) => {return player[filterParam].includes(filterItem);})
-    
+    let filterItem = ev.target.id;
+    if(ev.target.checked){
+        filter[filterParam].push(filterItem);
+    }
+    else{
+        filter[filterParam].splice(filter[filterParam].indexOf(filterItem), 1);
+    };
+
+    filterHeatMap();
+}
+
+function filterHeatMap() {
+    let filteredList = playerData.filter((player) => {
+        let check = true;
+        for(prop in filter){
+            check = filter[prop].toString() == "" ? true : 
+            (filter[prop].includes(player[prop]));
+            if(!check){break;};
+        }
+        return check;
+    })
+    let filteredTimes = [];
+    filteredList.forEach((player) => {
+        let x = data.filter((x) => {return x.name === player.name && x.page === Page})
+        filteredTimes = filteredTimes.concat(x);
+    })
+
     clearTimeTable();
     const timeTable = document.querySelector('#Heat-Map table tbody');
-    for (let i = 0; i < filteredList.length; i++) {
-        fillTimeTable(filteredList[i].time, timeTable.children, i);
+    for (let i = 0; i < filteredTimes.length; i++) {
+        fillTimeTable(filteredTimes[i].time, timeTable.children);
     }
 }
 
@@ -80,12 +105,8 @@ function nextPage(ev) {
         Page + parseInt(ev.target.id) : Page;
     let pageTracker = document.querySelector('#buttons p');
     pageTracker.innerText = `${Page}/12`;
-    let newPage = data.filter((x) => {
-        return (x.page == Page);
-    });
-    for (let i = 0; i < newPage.length; i++) {
-        fillTimeTable(newPage[i].time, document.querySelectorAll('#Heat-Map table tbody tr'), i);
-    }
+    
+    filterHeatMap();
 
     //Update Dates in Header
     fillTime((Day + ((Page - 1) * 7)), Month, Year)
@@ -147,7 +168,7 @@ function clearTimeTable() {
     });
 }
 
-function fillTimeTable(player, gridRows, num) {
+function fillTimeTable(player, gridRows) {
     for (let j = 0; j < player.length; j++) {
         for (let i = 0; i < player[j].length; i++) {
             let opacity = parseFloat(gridRows[j].children[i].style.opacity);
@@ -213,12 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fill table with players available times
     let newPage = data.filter((x) => { return (x.page == 1); })
     for (let i = 0; i < newPage.length; i++) {
-        fillTimeTable(newPage[i].time, timeTable.children, i);
+        fillTimeTable(newPage[i].time, timeTable.children);
     }
 
     // Displays filter 
-    const filter = document.querySelectorAll('section#Filter div');
-    displayParams(filter, "checkbox");
+    const filterObj = document.querySelectorAll('section#Filter div');
+    displayParams(filterObj, "checkbox");
 
     // Fill Required Attributes section with filter params
     const req = document.querySelectorAll('#requirement select')
