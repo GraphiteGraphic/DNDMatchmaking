@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e3NP12pN59QH4hf+6kDTyuhnfUElfLD9/7SfiukvkLjytAnGdvDR6x+O2X5zFrN2IN0/yFZ/vTJDCfjprB9HPw==",
+  "dgSpecHash": "7Pm0a1leSDfJ1A0sqYcUHPzu7flDvE6xReN+04mjrDR1F13q55u+/NNpYa1XMhzx9lcwf990JjWC5etDi5elgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+  "projectFilePath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DNDMatchmaking\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmad\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Ahmad\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

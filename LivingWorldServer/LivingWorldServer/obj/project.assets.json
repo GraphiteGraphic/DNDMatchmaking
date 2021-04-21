@@ -486,11 +486,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+      "projectUniqueName": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DNDMatchmaking\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
       "projectName": "LivingWorldServer",
-      "projectPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+      "projectPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DNDMatchmaking\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
       "packagesPath": "C:\\Users\\Ahmad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\obj\\",
+      "outputPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DNDMatchmaking\\LivingWorldServer\\LivingWorldServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
