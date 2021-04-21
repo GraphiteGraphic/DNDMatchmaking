@@ -486,11 +486,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+      "projectUniqueName": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
       "projectName": "LivingWorldServer",
-      "projectPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+      "projectPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
       "packagesPath": "C:\\Users\\Ahmad\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\LivingWorldServer\\LivingWorldServer\\obj\\",
+      "outputPath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -542,6 +542,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.13, 3.1.13]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -550,7 +556,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eW7Il5aeSX7vyNzdM5JZwHjtL/us4gpS4iYwVcr6yn1d/2VjafTIWovbcy4247IekamVE3+A59mIBcUFMmFrXQ==",
+  "dgSpecHash": "e3NP12pN59QH4hf+6kDTyuhnfUElfLD9/7SfiukvkLjytAnGdvDR6x+O2X5zFrN2IN0/yFZ/vTJDCfjprB9HPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
+  "projectFilePath": "C:\\Users\\Ahmad\\Desktop\\Coding Projects\\DND_Matchmaking_Vue\\LivingWorldServer\\LivingWorldServer\\LivingWorldServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ahmad\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Ahmad\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -13,7 +13,8 @@
     "C:\\Users\\Ahmad\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Ahmad\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
     "C:\\Users\\Ahmad\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\Ahmad\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\Ahmad\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Ahmad\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
   ],
   "logs": []
 }

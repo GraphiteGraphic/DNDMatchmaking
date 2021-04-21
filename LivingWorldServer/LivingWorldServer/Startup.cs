@@ -28,11 +28,21 @@ namespace LivingWorldServer
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
+
             string connectionString = Configuration.GetConnectionString("Project");
 
             services.AddControllers();
             services.AddTransient<UserSqlDao>(p => new UserSqlDao(connectionString));
             services.AddTransient<CharacterSqlDao>(p => new CharacterSqlDao(connectionString));
+            services.AddTransient<FilterSqlDao>(p => new FilterSqlDao(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +52,8 @@ namespace LivingWorldServer
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
 
