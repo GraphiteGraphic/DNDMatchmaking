@@ -150,7 +150,7 @@ namespace LivingWorldServer.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand(@"SELECT s.name AS name, r.name AS race from Sub_Race s
+                    SqlCommand cmd = new SqlCommand(@"SELECT s.sub_race_id, s.name AS name, r.name AS race from Sub_Race s
                                                         JOIN Race r ON r.race_id = s.race_id", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -160,6 +160,7 @@ namespace LivingWorldServer.DAO
                         while (reader.Read())
                         {
                             SubRace subrace = new SubRace();
+                            subrace.ID = Convert.ToInt32(reader["sub_race_id"]);
                             subrace.Name = Convert.ToString(reader["name"]);
                             subrace.Race = Convert.ToString(reader["race"]);
                             returnSubRace.Add(subrace);

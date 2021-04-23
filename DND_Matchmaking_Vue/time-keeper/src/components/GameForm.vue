@@ -113,8 +113,8 @@
           <option value="Null"></option>
           <option
             v-for="subrace in subraces"
-            :key="subrace.race + '_' + subrace.name"
-            :value="subrace.race + ': ' + subrace.name"
+            :key="subrace.id"
+            :value="subrace"
           >
             {{ subrace.race }}: {{ subrace.name }}
           </option>
@@ -199,7 +199,7 @@
           :key="req"
           @click="DeleteReq(req, 'subrace')"
         >
-          {{ req }}
+          {{ req.race }}: {{ req.name }}
         </p>
       </div>
       <div>
@@ -278,8 +278,8 @@
           <option value="Null"></option>
           <option
             v-for="subrace in subraces"
-            :key="subrace.race + '_' + subrace.name"
-            :value="subrace.race + ': ' + subrace.name"
+            :key="subrace.id"
+            :value="subrace"
           >
             {{ subrace.race }}: {{ subrace.name }}
           </option>
@@ -364,7 +364,7 @@
           :key="pref"
           @click="DeletePref(pref, 'subrace')"
         >
-          {{ pref }}
+          {{ pref.race }}: {{ pref.name }}
         </p>
       </div>
       <div>
