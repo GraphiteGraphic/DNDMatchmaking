@@ -1,14 +1,24 @@
 <template>
-  <form>
+  <form @submit.prevent="SaveGame()">
     <div>
       <label class="title" for="title">Mission Title: </label>
-      <input type="text" required="true" name="title" id="title" />
+      <input
+        type="text"
+        required="true"
+        name="title"
+        id="title"
+        v-model="game.title"
+      />
     </div>
     <div>
       <div>
         <label class="description" for="description">Description: </label>
       </div>
-      <textarea name="description" id="description"></textarea>
+      <textarea
+        name="description"
+        id="description"
+        v-model="game.description"
+      ></textarea>
     </div>
     <div>
       <label for="descriptor">Descriptors: </label>
@@ -17,29 +27,65 @@
         placeholder="RPLock, Skirmish, Ruthless"
         name="descriptor"
         id="descriptor"
+        v-model="game.descriptors"
       />
     </div>
     <div>
       <label for="region">Regional Influence: </label>
-      <select name="region" id="region">
+      <select name="region" id="region" v-model="game.region">
         <option value="none">None</option>
+        <option v-for="region in origins" :key="region" :value="region">
+          {{ region }}
+        </option>
       </select>
 
       <label for="minLevel">Minimum Level: </label>
-      <input type="number" min="1" max="12" name="minLevel" id="minLevel" />
+      <input
+        type="number"
+        v-model="game.minLvl"
+        min="1"
+        max="12"
+        name="minLevel"
+        id="minLevel"
+      />
 
       <label for="maxLevel">Maximum Level: </label>
-      <input type="number" min="1" max="12" name="maxLevel" id="maxLevel" />
+      <input
+        type="number"
+        v-model="game.maxLvl"
+        min="1"
+        max="12"
+        name="maxLevel"
+        id="maxLevel"
+      />
     </div>
     <div>
       <label for="sessionDate">Session Date: </label>
-      <input type="date" required="true" name="sessionDate" id="sessionDate" />
+      <input
+        type="date"
+        v-model="game.startDate"
+        required="true"
+        name="sessionDate"
+        id="sessionDate"
+      />
 
       <label for="startTime">Start Time: </label>
-      <input type="time" required="true" name="startTime" id="startTime" />
+      <input
+        type="time"
+        v-model="game.startTime"
+        required="true"
+        name="startTime"
+        id="startTime"
+      />
 
       <label for="endTime">End Time: </label>
-      <input type="time" required="true" name="endTime" id="endTime" />
+      <input
+        type="time"
+        v-model="game.endTime"
+        required="true"
+        name="endTime"
+        id="endTime"
+      />
     </div>
     <div>
       <label for="sessionNumber">Total Number of Sessions: </label>
@@ -50,10 +96,11 @@
         id="sessionNumber"
         min="1"
         placeholder="1"
+        v-model="game.sessions"
       />
 
       <label for="modifier">Mission Type: </label>
-      <select required="true" name="modifier" id="modifier">
+      <select v-model="game.type" required="true" name="modifier" id="modifier">
         <option value="minor">Minor</option>
         <option value="lesser">Lesser</option>
         <option value="major">Major</option>
@@ -62,6 +109,7 @@
       <label for="prestige">Prestige Level: </label>
       <input
         type="number"
+        v-model="game.prestige"
         min="0"
         max="4"
         placeholder="0"
@@ -73,6 +121,26 @@
     <div id="requirement">
       Required Attributes:
       <div>
+        <label for="req-Player">Name: </label>
+        <input
+          list="player_names"
+          name="req-Player"
+          id="req-Player"
+          v-model="reqPlayer"
+        />
+        <button type="button" @click="AddReq(reqPlayer, 'name')">+</button>
+        <datalist id="player_names">
+          <option
+            v-for="player of $store.state.characterData"
+            :key="player.name"
+            :value="player.name"
+          >
+            {{ player.name }}
+          </option>
+        </datalist>
+      </div>
+
+      <div>
         <label for="req-Faction">Faction: </label>
         <select
           name="req-Faction"
@@ -80,7 +148,7 @@
           v-model="reqFaction"
           @change="AddReq(reqFaction, 'faction')"
         >
-          <option value="null"></option>
+          <option value=""></option>
           <option v-for="faction in factions" :key="faction" :value="faction">
             {{ faction }}
           </option>
@@ -95,7 +163,7 @@
           v-model="reqRace"
           @change="AddReq(reqRace, 'race')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="race in races" :key="race" :value="race">
             {{ race }}
           </option>
@@ -110,7 +178,7 @@
           v-model="reqSubrace"
           @change="AddReq(reqSubrace, 'subrace')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option
             v-for="subrace in subraces"
             :key="subrace.id"
@@ -129,7 +197,7 @@
           v-model="reqOrigin"
           @change="AddReq(reqOrigin, 'origin')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="origin in origins" :key="origin" :value="origin">
             {{ origin }}
           </option>
@@ -144,7 +212,7 @@
           v-model="reqSuborigin"
           @change="AddReq(reqSuborigin, 'suborigin')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option
             v-for="suborigin in suborigins"
             :key="suborigin"
@@ -163,7 +231,7 @@
           v-model="reqDeity"
           @change="AddReq(reqDeity, 'deity')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="deity in deities" :key="deity" :value="deity">
             {{ deity }}
           </option>
@@ -173,9 +241,19 @@
 
     <section name="required-list" id="required-list">
       <div>
+        Name:
+        <p
+          v-for="req in game.requirements.name"
+          :key="req"
+          @click="DeleteReq(req, 'name')"
+        >
+          {{ req }}
+        </p>
+      </div>
+      <div>
         Faction:
         <p
-          v-for="req in requirements.faction"
+          v-for="req in game.requirements.faction"
           :key="req"
           @click="DeleteReq(req, 'faction')"
         >
@@ -185,7 +263,7 @@
       <div>
         Race:
         <p
-          v-for="req in requirements.race"
+          v-for="req in game.requirements.race"
           :key="req"
           @click="DeleteReq(req, 'race')"
         >
@@ -195,8 +273,8 @@
       <div>
         Subrace:
         <p
-          v-for="req in requirements.subrace"
-          :key="req"
+          v-for="req in game.requirements.subrace"
+          :key="req.id"
           @click="DeleteReq(req, 'subrace')"
         >
           {{ req.race }}: {{ req.name }}
@@ -205,7 +283,7 @@
       <div>
         Origin:
         <p
-          v-for="req in requirements.origin"
+          v-for="req in game.requirements.origin"
           :key="req"
           @click="DeleteReq(req, 'origin')"
         >
@@ -215,7 +293,7 @@
       <div>
         Suborigin:
         <p
-          v-for="req in requirements.suborigin"
+          v-for="req in game.requirements.suborigin"
           :key="req"
           @click="DeleteReq(req, 'suborigin')"
         >
@@ -225,7 +303,7 @@
       <div>
         Deity:
         <p
-          v-for="req in requirements.deity"
+          v-for="req in game.requirements.deity"
           :key="req"
           @click="DeleteReq(req, 'deity')"
         >
@@ -236,6 +314,16 @@
 
     <div id="preference">
       Preferred Attributes:
+      <div>
+        <label for="pref-Player">Name: </label>
+        <input
+          list="player_names"
+          name="pref-Player"
+          id="pref-Player"
+          v-model="prefPlayer"
+        />
+        <button type="button" @click="AddPref(prefPlayer, 'name')">+</button>
+      </div>
 
       <div>
         <label for="pref-Faction">Faction: </label>
@@ -245,7 +333,7 @@
           v-model="prefFaction"
           @change="AddPref(prefFaction, 'faction')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="faction in factions" :key="faction" :value="faction">
             {{ faction }}
           </option>
@@ -260,7 +348,7 @@
           v-model="prefRace"
           @change="AddPref(prefRace, 'race')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="race in races" :key="race" :value="race">
             {{ race }}
           </option>
@@ -275,7 +363,7 @@
           v-model="prefSubrace"
           @change="AddPref(prefSubrace, 'subrace')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option
             v-for="subrace in subraces"
             :key="subrace.id"
@@ -294,7 +382,7 @@
           v-model="prefOrigin"
           @change="AddPref(prefOrigin, 'origin')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="origin in origins" :key="origin" :value="origin">
             {{ origin }}
           </option>
@@ -309,7 +397,7 @@
           v-model="prefSuborigin"
           @change="AddPref(prefSuborigin, 'suborigin')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option
             v-for="suborigin in suborigins"
             :key="suborigin"
@@ -328,7 +416,7 @@
           v-model="prefDeity"
           @change="AddPref(prefDeity, 'deity')"
         >
-          <option value="Null"></option>
+          <option value=""></option>
           <option v-for="deity in deities" :key="deity" :value="deity">
             {{ deity }}
           </option>
@@ -338,9 +426,20 @@
 
     <section name="pref-list" id="pref-list">
       <div>
+        Name:
+        <p
+          v-for="pref in game.preferences.name"
+          :key="pref"
+          @click="DeletePref(pref, 'name')"
+        >
+          {{ pref }}
+        </p>
+      </div>
+
+      <div>
         Faction:
         <p
-          v-for="pref in preferences.faction"
+          v-for="pref in game.preferences.faction"
           :key="pref"
           @click="DeletePref(pref, 'faction')"
         >
@@ -350,7 +449,7 @@
       <div>
         Race:
         <p
-          v-for="pref in preferences.race"
+          v-for="pref in game.preferences.race"
           :key="pref"
           @click="DeletePref(pref, 'race')"
         >
@@ -360,8 +459,8 @@
       <div>
         Subrace:
         <p
-          v-for="pref in preferences.subrace"
-          :key="pref"
+          v-for="pref in game.preferences.subrace"
+          :key="pref.id"
           @click="DeletePref(pref, 'subrace')"
         >
           {{ pref.race }}: {{ pref.name }}
@@ -370,7 +469,7 @@
       <div>
         Origin:
         <p
-          v-for="pref in preferences.origin"
+          v-for="pref in game.preferences.origin"
           :key="pref"
           @click="DeletePref(pref, 'origin')"
         >
@@ -380,7 +479,7 @@
       <div>
         Suborigin:
         <p
-          v-for="pref in preferences.suborigin"
+          v-for="pref in game.preferences.suborigin"
           :key="pref"
           @click="DeletePref(pref, 'suborigin')"
         >
@@ -390,7 +489,7 @@
       <div>
         Deity:
         <p
-          v-for="pref in preferences.deity"
+          v-for="pref in game.preferences.deity"
           :key="pref"
           @click="DeletePref(pref, 'deity')"
         >
@@ -404,37 +503,59 @@
 </template>
 
 <script>
+import GameData from "@/services/Games.js";
+
 export default {
   data() {
     return {
+      game: {
+        title: "",
+        description: "",
+        descriptors: "",
+        region: "none",
+        minLvl: 1,
+        maxLvl: 12,
+        startDate: Date,
+        startTime: "",
+        endTime: "",
+        sessions: 1,
+        type: "minor",
+        prestige: 0,
+        requirements: {
+          name: [],
+          faction: [],
+          race: [],
+          subrace: [],
+          origin: [],
+          suborigin: [],
+          deity: [],
+        },
+        preferences: {
+          name: [],
+          faction: [],
+          race: [],
+          subrace: [],
+          origin: [],
+          suborigin: [],
+          deity: [],
+        },
+      },
+
+      reqPlayer: "",
       reqFaction: "",
       reqRace: "",
       reqSubrace: "",
       reqOrigin: "",
       reqSuborigin: "",
       reqDeity: "",
+
+      prefPlayer: "",
       prefFaction: "",
       prefRace: "",
       prefSubrace: "",
       prefOrigin: "",
       prefSuborigin: "",
       prefDeity: "",
-      requirements: {
-        faction: [],
-        race: [],
-        subrace: [],
-        origin: [],
-        suborigin: [],
-        deity: [],
-      },
-      preferences: {
-        faction: [],
-        race: [],
-        subrace: [],
-        origin: [],
-        suborigin: [],
-        deity: [],
-      },
     };
   },
   computed: {
@@ -459,22 +580,36 @@ export default {
   },
   methods: {
     AddReq(value, prop) {
-      if (!this.requirements[prop].includes(value) && value != "null") {
-        this.requirements[prop].push(value);
-        this.requirements[prop] = this.requirements[prop].sort();
+      if (!this.game.requirements[prop].includes(value) && value != "") {
+        this.game.requirements[prop].push(value);
+        this.game.requirements[prop] = this.game.requirements[prop].sort();
       }
     },
     DeleteReq(value, prop) {
-      this.requirements[prop].splice(this.requirements[prop].indexOf(value), 1);
+      this.game.requirements[prop].splice(
+        this.game.requirements[prop].indexOf(value),
+        1
+      );
     },
     AddPref(value, prop) {
-      if (!this.preferences[prop].includes(value) && value != "null") {
-        this.preferences[prop].push(value);
-        this.preferences[prop] = this.preferences[prop].sort();
+      if (!this.game.preferences[prop].includes(value) && value != "") {
+        this.game.preferences[prop].push(value);
+        this.game.preferences[prop] = this.game.preferences[prop].sort();
       }
     },
     DeletePref(value, prop) {
-      this.preferences[prop].splice(this.preferences[prop].indexOf(value), 1);
+      this.game.preferences[prop].splice(
+        this.game.preferences[prop].indexOf(value),
+        1
+      );
+    },
+    SaveGame() {
+      this.game.minLvl = parseInt(this.game.minLvl);
+      this.game.maxLvl = parseInt(this.game.maxLvl);
+      this.game.sessions = parseInt(this.game.sessions);
+      this.game.prestige = parseInt(this.game.prestige);
+
+      GameData.saveGame(this.game);
     },
   },
 };

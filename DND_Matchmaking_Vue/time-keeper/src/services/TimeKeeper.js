@@ -5,7 +5,7 @@ const http = axios.create({baseURL: 'https://localhost:44381'});
 export default{
     saveTime(payload) {
         console.log(payload);
-//        return http.put()
+//        return http.put('/time', payload);
     },
     getFactions() {
         return http.get('/faction');
