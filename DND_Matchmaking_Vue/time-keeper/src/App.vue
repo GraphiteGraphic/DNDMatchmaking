@@ -7,6 +7,9 @@
 <script>
 import TimeKeeper from "@/services/TimeKeeper.js"
 export default {
+  data() {
+    return {user: ""}
+  },
   created() {
     TimeKeeper.getFactions().then( (resp) => {
       this.$store.commit("SET_FACTIONS", resp.data.sort());

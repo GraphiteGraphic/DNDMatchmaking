@@ -6,6 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   strict: true,
   state: {
+    token: '',
+    user: '',
     QUARTER_START: new Date(new Date(2020, 11, 27).getTime() + ((Math.floor((new Date() - new Date(2020, 11, 27)) / 1000 / 3600 / 24 / 7 / 8)) * 56 * 86400000)),
     TIME_ZONE: new Date().getTimezoneOffset() / 60,
     faction: {},
