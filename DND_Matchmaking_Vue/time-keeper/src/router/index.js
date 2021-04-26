@@ -12,8 +12,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "Home",
+      path: "/player",
+      name: "Player",
       component: PlayerSide,
       meta: {
         requiresAuth: true

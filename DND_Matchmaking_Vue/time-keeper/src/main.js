@@ -9,8 +9,6 @@ Vue.config.productionTip = false
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 
 new Vue({
-  clientID: process.env.clientID,
-  clientSecret: process.env.clientSecret,
   store,
   router,
   render: h => h(App),

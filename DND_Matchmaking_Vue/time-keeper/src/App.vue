@@ -5,29 +5,45 @@
 </template>
 
 <script>
-import TimeKeeper from "@/services/TimeKeeper.js"
+import TimeKeeper from "@/services/TimeKeeper.js";
+import Discord from "@/services/Discord.js";
+
 export default {
   data() {
-    return {user: ""}
+    return {
+      discord_code: "",
+    };
   },
   created() {
-    TimeKeeper.getFactions().then( (resp) => {
+    this.discord_code = this.$route.query.code;
+
+    if (this.discord_code) {
+      Discord.discord_token(this.discord_code).then((resp) => {
+        this.$store.commit("SET_DISCORD", resp.data);
+        Discord.discord_user(resp.data).then((r) => {
+          console.log(r.data);
+          this.$router.push("/player");
+        });
+      });
+    }
+
+    TimeKeeper.getFactions().then((resp) => {
       this.$store.commit("SET_FACTIONS", resp.data.sort());
     });
-    TimeKeeper.getRaces().then( (resp) => {
+    TimeKeeper.getRaces().then((resp) => {
       this.$store.commit("SET_RACES", resp.data.sort());
     });
-    TimeKeeper.getSubraces().then( (resp) => {
+    TimeKeeper.getSubraces().then((resp) => {
       //TODO Sort Subraces alphbetically by race then by subrace
       this.$store.commit("SET_SUBRACES", resp.data);
     });
-    TimeKeeper.getOrigins().then( (resp) => {
+    TimeKeeper.getOrigins().then((resp) => {
       this.$store.commit("SET_ORIGINS", resp.data.sort());
     });
-    TimeKeeper.getSuborigins().then( (resp) => {
+    TimeKeeper.getSuborigins().then((resp) => {
       this.$store.commit("SET_SUBORIGINS", resp.data.sort());
     });
-    TimeKeeper.getDeities().then( (resp) => {
+    TimeKeeper.getDeities().then((resp) => {
       this.$store.commit("SET_DEITIES", resp.data.sort());
     });
   },

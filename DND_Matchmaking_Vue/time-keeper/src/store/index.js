@@ -3,10 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const currentToken = localStorage.getItem('discord_token');
+
 export default new Vuex.Store({
   strict: true,
   state: {
-    token: '',
+    discord_token: currentToken || '',
     user: '',
     QUARTER_START: new Date(new Date(2020, 11, 27).getTime() + ((Math.floor((new Date() - new Date(2020, 11, 27)) / 1000 / 3600 / 24 / 7 / 8)) * 56 * 86400000)),
     TIME_ZONE: new Date().getTimezoneOffset() / 60,
@@ -39,6 +41,13 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    SET_DISCORD(state, token) {
+      state.discord_token = token;
+      localStorage.setItem('discord_token', token);
+    },
+    SET_USER(state, data) {
+      state.user = data;
+    },
     TOGGLE_FILTER(state, obj) {
       for (let prop in obj) {
         if (!state.filter[prop].includes(obj[prop])) {
