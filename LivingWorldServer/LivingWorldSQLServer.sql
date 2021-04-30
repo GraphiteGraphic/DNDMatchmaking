@@ -14,13 +14,15 @@ GO
 
 --Individual Player in Living World--
 Create Table LW_User(
-	user_id int identity,
+	user_id int IDENTITY,
+	discord_hash nvarchar(64) DEFAULT '',
+	salt varchar(32) DEFAULT '',
 	discord_tag nvarchar(64) Not Null,
 	last_played Date DEFAULT '2021-03-06',
-	staff_status int DEFAULT 0,
+	staff_role nvarchar(32) DEFAULT Null,
 	player_status int DEFAULT 1,
 	Constraint PK_user Primary Key (user_id),
-	--Constraint CHK_staff_status CHECK (staff_status BETWEEN 0 AND ) --FIGURE OUT HOW MANY ROLES WE HAVE
+	--Constraint CHK_staff_status CHECK (staff_status = 'Dungeon Master') --FIGURE OUT HOW MANY ROLES WE HAVE
 	Constraint CHK_player_status CHECK (player_status BETWEEN 0 AND 3)
 )
 
