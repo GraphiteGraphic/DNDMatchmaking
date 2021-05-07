@@ -1,4 +1,5 @@
 using LivingWorldServer.DAO;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace LivingWorldServer
 {
@@ -38,6 +42,28 @@ namespace LivingWorldServer
             });
 
             string connectionString = Configuration.GetConnectionString("Project");
+
+            // configure jwt authentication
+            var key = Encoding.ASCII.GetBytes(Configuration["JwtSecret"]);
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[JwtRegisteredClaimNames.Sub] = "sub";
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    NameClaimType = "name"
+                };
+            });
 
             services.AddControllers();
             services.AddTransient<UserSqlDao>(p => new UserSqlDao(connectionString));
