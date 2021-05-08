@@ -21,8 +21,15 @@ export default {
       Discord.discord_token(this.discord_code).then((resp) => {
         this.$store.commit("SET_DISCORD", resp.data);
         Discord.discord_user(resp.data).then((r) => {
+          this.$store.commit("SET_USER", r.data);
           this.$router.push("/player");
         });
+      });
+    }
+
+    if (this.$store.state.discord_token) {
+      Discord.discord_user(this.$store.state.discord_token).then((r) => {
+        this.$store.commit("SET_USER", r.data);
       });
     }
 

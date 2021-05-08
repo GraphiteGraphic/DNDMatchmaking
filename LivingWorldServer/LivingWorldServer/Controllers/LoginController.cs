@@ -26,7 +26,7 @@ namespace LivingWorldServer.Controllers
             return Ok();
         }
 
-        [HttpPost("/register")]
+        [HttpPut("/register")]
         public IActionResult Register()
         {
             return Ok();

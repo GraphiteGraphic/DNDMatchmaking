@@ -14,6 +14,11 @@ import PlayerTime from "../components/PlayerTime.vue";
 
 export default {
   name: "player-side",
+  computed: {
+    Test() {
+      return this.$store.state.user;
+    }
+  },
   components: { PlayerTime },
 };
 </script>
